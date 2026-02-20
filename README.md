@@ -111,7 +111,6 @@ This confirms the importance of proper feature validation before model training.
 Data_Leakage_Detection_Case_Study/
 │
 ├── data/
-│   └── raw/
 │       └── customer_churn_realistic_with_leakage.csv
 │
 ├── src/
@@ -142,7 +141,7 @@ Data_Leakage_Detection_Case_Study/
 
 🚀 How to Run
 1️⃣ Install Dependencies
-pip install -r requirements.txt
+uv add -r requirements.txt
 2️⃣ Run Training
 python src/train.py
 🧠 Key Learnings
@@ -156,3 +155,4 @@ python src/train.py
 🏗 Modular coding improves maintainability
 
 🎯 Production-ready models require realistic validation
+
