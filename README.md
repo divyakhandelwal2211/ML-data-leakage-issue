@@ -1,39 +1,61 @@
-Data Leakage Detection in Customer Churn Prediction
-1. Introduction
+🚨 Data Leakage Detection in Customer Churn Prediction
 
-Machine Learning models sometimes show extremely high accuracy during validation but fail in real-world deployment. One major reason behind this issue is Data Leakage, particularly Future Information Leakage.
+⚠️ A practical Machine Learning case study demonstrating how future information leakage can artificially inflate model performance — and how to properly detect and eliminate it.
 
-This project demonstrates how future-based features can artificially inflate model performance and how to properly identify, remove, and validate against leakage to build a production-ready model.
+📌 Overview
 
-2. Problem Statement
+Machine Learning models sometimes show extremely high accuracy during validation but fail in real-world deployment.
 
-The objective of this project was to build a Customer Churn Prediction Model.
+One major reason behind this issue is:
 
-However, the initial dataset contained features that were not available at prediction time:
+Data Leakage (especially Future Information Leakage)
+
+This project demonstrates:
+
+🔍 How leakage occurs
+
+📈 Why it inflates model performance
+
+🛠 How to detect it
+
+✅ How to remove it properly
+
+🚀 How to build a production-ready ML pipeline
+
+🎯 Problem Statement
+
+Build a Customer Churn Prediction Model.
+
+However, the initial dataset contained future-based features:
 
 future_account_status
 
 cancellation_date
 
-These columns represent post-event information. Including them during model training leads to data leakage, resulting in misleading evaluation metrics and unrealistic model performance.
+These features are not available at prediction time.
 
-3. Objective
+Including them during model training leads to:
 
-Identify future information leakage in the dataset
+❌ Artificially high accuracy
+
+❌ Misleading evaluation metrics
+
+❌ Non-deployable model
+
+🎯 Objective
+
+Identify future information leakage
 
 Remove leakage features
 
-Train a model using only valid historical data
+Retrain the model correctly
 
-Compare model performance before and after leakage removal
+Compare performance before & after leakage removal
 
-Build a clean, modular, industry-ready ML pipeline
+Build a clean modular ML project
 
-4. Dataset Description
-
-The dataset includes:
-
-Valid Features (Available at prediction time)
+📊 Dataset Description
+✅ Valid Features (Available at Prediction Time)
 
 monthly_usage
 
@@ -41,61 +63,56 @@ num_complaints
 
 tenure_months
 
-Leakage Features (Removed during preprocessing)
+🚫 Leakage Features (Removed During Preprocessing)
 
 future_account_status
 
 cancellation_date
 
-Target Variable
+🎯 Target
 
-churn (1 = Customer churned, 0 = Customer retained)
+churn (1 = Churned, 0 = Retained)
 
-5. Approach
-Step 1: Leakage Identification
+🛠 Approach
+1️⃣ Leakage Identification
 
-Analyzed feature availability and detected future-based attributes.
+Analyzed feature availability and detected post-event information.
 
-Step 2: Leakage Removal
+2️⃣ Leakage Removal
 
-Removed leakage columns explicitly in preprocessing module to ensure clean training data.
+Explicitly dropped leakage columns in preprocessing.
 
-Step 3: Modular Architecture
+3️⃣ Modular Pipeline Design
 
-Structured the project into:
+Separated logic into:
 
-Data Loading
+Data loading
 
 Preprocessing
 
-Model Building
+Model building
 
 Evaluation
 
-Step 4: Model Training
+4️⃣ Model Used
 
-Used Logistic Regression as the baseline classification model.
+📌 Logistic Regression
 
-Step 5: Evaluation
+📌 Feature Scaling (StandardScaler)
 
-Compared model performance:
+📈 Results Comparison
+Scenario	Accuracy
+With Leakage	🔥 Artificially High
+Without Leakage	✅ Realistic & Reliable
 
-With leakage
+This confirms the importance of proper feature validation before model training.
 
-Without leakage
-
-6. Results
-Scenario	Performance
-With Leakage	Artificially High Accuracy
-Without Leakage	Realistic and Reliable Accuracy
-
-This confirms the negative impact of data leakage on model validation.
-
-7. Project Structure
+📂 Project Structure
 Data_Leakage_Detection_Case_Study/
 │
 ├── data/
 │   └── raw/
+│       └── customer_churn_realistic_with_leakage.csv
 │
 ├── src/
 │   ├── data_loader.py
@@ -106,41 +123,36 @@ Data_Leakage_Detection_Case_Study/
 │
 ├── requirements.txt
 └── README.md
-8. Tech Stack
 
-Python
+✔ Clean separation of concerns
+✔ Easy to extend
+✔ Industry-style structure
 
-Pandas
+🧰 Tech Stack
 
-Scikit-learn
+🐍 Python
 
-Logistic Regression
+📊 Pandas
 
-Modular ML Pipeline Design
+🤖 Scikit-Learn
 
-9. Key Learnings
+📈 Logistic Regression
 
-Importance of feature validation before model training
+🏗 Modular ML Architecture
 
-Risks associated with future information leakage
-
-Why extremely high accuracy should be critically evaluated
-
-Importance of modular and clean ML architecture
-
-Difference between experimental and production-ready models
-
-10. How to Run the Project
-
-Install dependencies:
-
-uv add -r requirements.txt
-
-Run training:
-
+🚀 How to Run
+1️⃣ Install Dependencies
+pip install -r requirements.txt
+2️⃣ Run Training
 python src/train.py
-11. Conclusion
+🧠 Key Learnings
 
-This project highlights a critical real-world ML challenge — data leakage. By identifying and removing future-based features, the model becomes reliable and production-ready.
+🚨 Extremely high accuracy should raise suspicion
 
-The focus of this project is not just building a churn model, but demonstrating strong debugging, validation, and ML engineering practices.
+📌 Future information leakage is a serious ML issue
+
+🧩 Proper preprocessing is critical
+
+🏗 Modular coding improves maintainability
+
+🎯 Production-ready models require realistic validation
